@@ -8,7 +8,7 @@ function App() {
         <h1>
           Hello World!
         </h1>
-        <Pokemon name="Pikachu" type="electric" /> {/** new Pokemon(name) */}
+        <Pokemon name="Pikachu" type="electric" /> {/** new Pokemon(name, type) */}
         <Pokemon name="Charizard" type="fire" />
       </header>
     </div>

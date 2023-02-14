@@ -11,7 +11,7 @@ class Pokemon extends React.Component {
     return this.props.name.toUpperCase();
   }
 
-  // built in method on React Components
+  // React Components have methods for rendering, because we are extending a React.Component we get to tell React what HTML we want to output in the browser.
   render() {
     return (
       <div>
