@@ -17,6 +17,10 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount() {
+    // code goes here
+  }
+
   render() {
     return(
       <div className="app">
