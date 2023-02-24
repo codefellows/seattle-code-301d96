@@ -14,10 +14,14 @@ class App extends React.Component {
   getRecipes = async (e) => {
     e.preventDefault();
     const server='http://localhost:3001';
-    const recipes = await axios.get(`${server}/recipes`, {params: {ingredient: this.state.ingredient}});
+    const response = await axios.get(`${server}/recipes`, {params: {ingredient: this.state.ingredient}});
+    this.setState({
+      recipes: response.data
+    });
   }
 
   render() {
+    console.log(this.state);
     return(
       <>
         <form onSubmit={this.getRecipes}>
@@ -29,6 +33,7 @@ class App extends React.Component {
         {this.state.recipes.length && this.state.recipes.map((recipe, idx) => (
           <Recipe
             key={idx}
+            idx={idx}
             recipe={recipe}
           />
           ))

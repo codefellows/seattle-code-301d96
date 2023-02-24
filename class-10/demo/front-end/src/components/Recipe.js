@@ -3,9 +3,9 @@ import React from 'react';
 class Recipe extends React.Component {
   render() {
     return(
-      <div key={idx}>
+      <div key={this.props.idx}>
         <h2><a href={this.props.recipe.uri}>{this.props.recipe.name}</a></h2>
-        <img src={recipe.image_url} />
+        <img src={this.props.recipe.image_url} />
         <ul>
           {this.props.recipe.ingredients.map(ingredient => (
             <li key={Math.random()}>{ingredient}</li>
