@@ -8,6 +8,7 @@ import {
   Route,
   Link,
 } from "react-router-dom";
+import CatCreateForm from './CatCreateForm';
 
 const SERVER = process.env.REACT_APP_SERVER;
 
@@ -46,6 +47,26 @@ class App extends React.Component {
     this.fetchCats(location);
   }
 
+  catCreateHandler = async (catInfo) => {
+    try {
+      let apiUrl = `${SERVER}/cats`;
+      await axios.post(apiUrl, catInfo);
+      this.fetchCats();
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  handleDelete = async (cat) => {
+    try {
+      let apiUrl = `${SERVER}/cats/${cat._id}`;
+      await axios.delete(apiUrl);
+      this.fetchCats();
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   render() {
     return (
 
@@ -59,23 +80,28 @@ class App extends React.Component {
             <Route exact path="/">
 
               <div>
-                <Cats cats={this.state.cats} />
+                <Cats cats={this.state.cats} onDelete={this.handleDelete} />
                 <h2>Filter by location</h2>
                 <form onSubmit={this.handleLocationSubmit}>
                   <input name="location" />
                   <button>ok</button>
                 </form>
+
+                <CatCreateForm onCreate={this.catCreateHandler}/>
               </div>
 
             </Route>
             <Route path="/about">
               <h1>About Page Here</h1>
             </Route>
+
           </Switch>
         </Router>
 
     )
   }
 }
+
+
 
 export default App;
