@@ -34,7 +34,6 @@ class App extends React.Component {
   }
 
   handleUpdate = async (snack) => {
-    console.log(snack);
     await axios.put(`${API_SERVER}/snacks/${snack._id}`, snack);
     this.getSnacks();
   }

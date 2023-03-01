@@ -13,7 +13,6 @@ class UpdateSnackForm extends React.Component {
       name: event.target.formName.value,
       description: event.target.formDescription.value,
       rating: parseInt(event.target.formRating.value),
-
     });
     this.handleClose();
   };

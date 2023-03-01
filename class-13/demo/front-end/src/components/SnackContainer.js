@@ -35,7 +35,7 @@ class SnackContainer extends React.Component {
             )
           }
         </section>
-        <UpdateSnackForm show={this.state.showModal} snack={this.state.selectedSnack} onUpdate={this.props.onUpdate} onClose={this.handleModalClose} />
+        <UpdateSnackForm show={this.state.showModal} snack={this.state.selectedSnack} onUpdate={this.props.onUpdate}  onClose={this.handleModalClose} />
       </div>
     );
   }

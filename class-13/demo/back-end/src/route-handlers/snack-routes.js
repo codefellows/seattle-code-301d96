@@ -22,13 +22,6 @@ const getSnack = async (req, res) => {
   res.status(200).json(snacks[0]);
 };
 
-const updateSnack = async (request, response) => {
-  const id = request.params.id;
-
-  const snack = await SnackModel.findByIdAndUpdate(id, request.body);
-
-  response.send(snack);
-};
 
 const deleteSnack = async (req, res) => {
   const id = req.params.id;
@@ -36,10 +29,16 @@ const deleteSnack = async (req, res) => {
   res.sendStatus(200);
 };
 
+const updateSnack = async (req, res) => {
+  const id = req.params.id;
+  const updatedSnack = await SnackModel.findByIdAndUpdate(id, req.body, {new: true});
+  res.status(202).send(updatedSnack);
+};
+
 module.exports = {
   createSnack,
   getSnacks,
   getSnack,
-  updateSnack,
   deleteSnack,
+  updateSnack,
 };
